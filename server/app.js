@@ -2,6 +2,8 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const morgan = require("morgan");
+const graphqlHTTP = require("express-graphql");
+const schema = require("./schema/schema");
 
 const app = express();
 
@@ -9,6 +11,9 @@ const app = express();
 app.use(cors());
 app.use(helmet());
 app.use(morgan("dev"));
+
+// graphql middleware
+app.use("/graphql", graphqlHTTP({ schema }));
 
 // App listen
 const PORT = process.env.PORT || 4000;
