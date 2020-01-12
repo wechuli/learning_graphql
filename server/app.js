@@ -13,7 +13,7 @@ app.use(helmet());
 app.use(morgan("dev"));
 
 // graphql middleware
-app.use("/graphql", graphqlHTTP({ schema }));
+app.use("/graphql", graphqlHTTP({ schema, graphiql: true }));
 
 // App listen
 const PORT = process.env.PORT || 4000;
